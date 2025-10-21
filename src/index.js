@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./Css/components/button.css";
 import "./index.css";
 import App from "./App";
 //use thes to rous paths page wibsite

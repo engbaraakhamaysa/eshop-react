@@ -27,31 +27,39 @@ export default function Login() {
   }
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email">Email:</label>
-          <input
-            name="email"
-            id="email"
-            value={form.email}
-            type="email"
-            placeholder="Enter Your Email..."
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password">Password:</label>
-          <input
-            name="password"
-            id="password"
-            value={form.password}
-            type="password"
-            placeholder="Enter Your Password..."
-            onChange={handleChange}
-          />
-        </div>
-        <button>Submit</button>
-      </form>
+      <div className="row h-100">
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="custom-form">
+            <h1>Login NOOow</h1>
+            <div className="form-control">
+              <input
+                name="email"
+                id="email"
+                value={form.email}
+                type="email"
+                placeholder="Enter Your Email..."
+                required
+                onChange={handleChange}
+              />
+              <label htmlFor="email">Email</label>
+            </div>
+            <div className="form-control">
+              <input
+                name="password"
+                id="password"
+                value={form.password}
+                type="password"
+                placeholder="Enter Your Password..."
+                minLength={8}
+                required
+                onChange={handleChange}
+              />
+              <label htmlFor="password">Password</label>
+            </div>
+            <button className="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
