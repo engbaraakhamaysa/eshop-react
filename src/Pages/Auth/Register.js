@@ -9,6 +9,7 @@ export default function Register() {
     email: "",
     password: "",
   });
+  const [err, setErr] = useState("");
   //Handel Form Change
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,8 +23,13 @@ export default function Register() {
       console.log(`${baseURL}/${REGISTER}`);
       await axios.post(`${baseURL}/${REGISTER}`, form);
       console.log("Succesflly");
+      window.location.pathname("/");
     } catch (err) {
-      console.error(err);
+      if (err.response.status === 422) {
+        setErr("Email is already been taken");
+      } else {
+        setErr("Internal Server Error");
+      }
     }
   }
   return (
@@ -70,6 +76,7 @@ export default function Register() {
               <label htmlFor="password">Password</label>
             </div>
             <button className="btn btn-primary">Register</button>
+            {err !== "" && <span className="error">{err}</span>}
           </div>
         </form>
       </div>
