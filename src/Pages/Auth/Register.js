@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { baseURL, REGISTER } from "../../Api/Api";
 import axios from "axios";
+import Cookie from "cookie-universal";
+
 import LoadingSubmit from "../../Components/Loading/Loading";
 
 export default function Register() {
@@ -12,6 +14,7 @@ export default function Register() {
   });
 
   const [loading, setLoading] = useState(false);
+  const cooike = Cookie();
   const [err, setErr] = useState("");
   //Handel Form Change
   function handleChange(e) {
@@ -25,12 +28,16 @@ export default function Register() {
 
     try {
       console.log(`${baseURL}/${REGISTER}`);
-      await axios.post(`${baseURL}/${REGISTER}`, form);
+      const res = await axios.post(`${baseURL}/${REGISTER}`, form);
       setLoading(false);
       console.log("Succesflly");
+      const token = res.data.token.accessToken;
+      cooike.set("e-commercs", token);
       window.location.pathname = "/";
+      console.log(res);
     } catch (err) {
-      if (err.response.status === 422) {
+      setLoading(false);
+      if (err.response.status === 400) {
         setErr("Email is already been taken");
       } else {
         setErr("Internal Server Error");
