@@ -31,7 +31,7 @@ export default function Login() {
       console.log("Succesflly");
       const token = res.data.token.accessToken;
       cooike.set("e-commercs", token);
-      window.location.pathname = "/";
+      window.location.pathname = "/users";
 
       console.log(res);
     } catch (err) {

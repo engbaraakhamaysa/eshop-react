@@ -33,7 +33,7 @@ export default function Register() {
       console.log("Succesflly");
       const token = res.data.token.accessToken;
       cooike.set("e-commercs", token);
-      window.location.pathname = "/";
+      window.location.pathname = "/users";
       console.log(res);
     } catch (err) {
       setLoading(false);

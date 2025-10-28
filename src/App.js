@@ -4,6 +4,7 @@ import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import "./Css/components/form.css";
 import "./Css/base/media.css";
+import Users from "./Pages/Dashboard/Users";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/users" element={<Users />}></Route>
       </Routes>
     </div>
   );
