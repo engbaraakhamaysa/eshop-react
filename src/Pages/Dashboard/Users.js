@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { baseURL, USERS } from "../../Api/Api";
 import Cookie from "cookie-universal";
 import axios from "axios";
-import { data } from "react-router-dom";
 import Logout from "../Auth/Logout";
 
 export default function Users() {

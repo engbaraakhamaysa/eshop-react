@@ -30,7 +30,9 @@ export default function Login() {
       setLoading(false);
       console.log("Succesflly");
       const token = res.data.token.accessToken;
+      const refershToken = res.data.token.refreshTokenString;
       cooike.set("e-commercs", token);
+      cooike.set("refershToken", refershToken);
       window.location.pathname = "/users";
 
       console.log(res);
