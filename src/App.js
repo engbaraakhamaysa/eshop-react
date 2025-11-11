@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/Website/HomePage";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
-import "./Css/components/form.css";
-import "./Css/base/media.css";
 import Users from "./Pages/Dashboard/Users";
 
 function App() {

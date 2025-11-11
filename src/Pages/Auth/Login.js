@@ -3,6 +3,7 @@ import { baseURL, LOGIN } from "../../Api/Api";
 import axios from "axios";
 import Cookie from "cookie-universal";
 import LoadingSubmit from "../../Components/Loading/Loading";
+import Form from "react-bootstrap/Form";
 
 export default function Login() {
   //Obj Setates
@@ -49,11 +50,29 @@ export default function Login() {
     <>
       {loading && <LoadingSubmit />}
       <div className="container">
-        <div className="row h-100">
-          <form className="form" onSubmit={handleSubmit}>
+        <div className="row" style={{ height: "100vh" }}>
+          <Form className="form" onSubmit={handleSubmit}>
             <div className="custom-form">
               <h1>Login NOOow</h1>
-              <div className="form-control">
+
+              <Form.Group
+                className="form-custom"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  name="email"
+                  type="email"
+                  placeholder="Enter Your email"
+                  onChange={handleChange}
+                  value={form.email}
+                  required
+                />
+                <Form.Label>Email:</Form.Label>
+              </Form.Group>
+
+              {/* 
+                 <div className="form-control">
+                
                 <input
                   name="email"
                   id="email"
@@ -64,24 +83,29 @@ export default function Login() {
                   onChange={handleChange}
                 />
                 <label htmlFor="email">Email</label>
-              </div>
-              <div className="form-control">
-                <input
+                 </div>
+                */}
+
+              <Form.Group
+                className="form-custom"
+                controlId="exampleForm.ControlInput2"
+              >
+                <Form.Control
                   name="password"
-                  id="password"
-                  value={form.password}
                   type="password"
-                  placeholder="Enter Your Password..."
-                  minLength={8}
-                  required
+                  placeholder="Enter Your password.."
                   onChange={handleChange}
+                  value={form.password}
+                  minLength="6"
+                  required
                 />
-                <label htmlFor="password">Password</label>
-              </div>
+                <Form.Label>Email:</Form.Label>
+              </Form.Group>
+
               <button className="btn btn-primary">Login</button>
               {err !== "" && <span className="error">{err}</span>}
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </>

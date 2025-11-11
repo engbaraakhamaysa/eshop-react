@@ -5,6 +5,7 @@ import "./index.css";
 import "./Css/components/alerts.css";
 import "./Css/components/loading.css";
 import "./Css/components/google.css";
+import "./Pages/Auth/Auth.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 
