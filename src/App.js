@@ -21,7 +21,7 @@ function App() {
 
         {/* Protected Routes */}
         <Route path="/dashboard" element={<Dashboard />}>
-          {/* <Route path="/users" element={<Users />} /> */}
+          <Route path="users" element={<Users />} />
         </Route>
       </Routes>
     </div>
