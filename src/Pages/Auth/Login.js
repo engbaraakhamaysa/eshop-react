@@ -99,7 +99,7 @@ export default function Login() {
                   minLength="6"
                   required
                 />
-                <Form.Label>Email:</Form.Label>
+                <Form.Label>Password:</Form.Label>
               </Form.Group>
 
               <button className="btn btn-primary">Login</button>

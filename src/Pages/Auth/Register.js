@@ -2,6 +2,7 @@ import { useState } from "react";
 import { baseURL, REGISTER } from "../../Api/Api";
 import axios from "axios";
 import Cookie from "cookie-universal";
+import Form from "react-bootstrap/Form";
 
 import LoadingSubmit from "../../Components/Loading/Loading";
 
@@ -50,35 +51,58 @@ export default function Register() {
     <>
       {loading && <LoadingSubmit />}
       <div className="container">
-        <div className="row h-100">
-          <form className="form" onSubmit={handleSubmit}>
+        <div className="row" style={{ height: "100vh" }}>
+          <Form className="form" onSubmit={handleSubmit}>
             <div className="custom-form">
               <h1>Register Now</h1>
-              <div className="form-control">
-                <input
-                  id="name"
+
+              <Form.Group
+                className="form-custom"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
                   name="name"
-                  value={form.name}
                   type="text"
-                  placeholder="Enter Your Name..."
-                  required
+                  placeholder="Enter Your email"
                   onChange={handleChange}
+                  value={form.name}
+                  required
                 />
-                <label htmlFor="name">Name</label>
-              </div>
-              <div className="form-control">
-                <input
+                <Form.Label>Name:</Form.Label>
+              </Form.Group>
+
+              <Form.Group
+                className="form-custom"
+                controlId="exampleForm.ControlInput2"
+              >
+                <Form.Control
                   name="email"
-                  id="email"
-                  value={form.email}
                   type="email"
-                  placeholder="Enter Your Email..."
-                  required
+                  placeholder="Enter Your email"
                   onChange={handleChange}
+                  value={form.email}
+                  required
                 />
-                <label htmlFor="email">Email</label>
-              </div>
-              <div className="form-control">
+                <Form.Label>Email:</Form.Label>
+              </Form.Group>
+
+              <Form.Group
+                className="form-custom"
+                controlId="exampleForm.ControlInput2"
+              >
+                <Form.Control
+                  name="password"
+                  type="password"
+                  placeholder="Enter Your password.."
+                  onChange={handleChange}
+                  value={form.password}
+                  minLength="6"
+                  required
+                />
+                <Form.Label>Password:</Form.Label>
+              </Form.Group>
+
+              {/* <div className="form-control">
                 <input
                   name="password"
                   id="password"
@@ -90,7 +114,7 @@ export default function Register() {
                   onChange={handleChange}
                 />
                 <label htmlFor="password">Password</label>
-              </div>
+              </div> */}
 
               <button className="btn btn-primary">Register</button>
 
@@ -111,7 +135,7 @@ export default function Register() {
               </div>
               {err !== "" && <span className="error">{err}</span>}
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </>
