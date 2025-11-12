@@ -123,7 +123,7 @@ export default function Register() {
                   <div className="google-icon-wrapper">
                     <img
                       className="google-icon"
-                      src="https://upload.wikimedis.org/wikipadis/commons/5/53/Google_%226%22_Logo.svg"
+                      src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
                       alt="sign in with google"
                     />
                   </div>

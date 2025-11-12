@@ -9,11 +9,12 @@ export default function GoofleCallBack() {
     const cookie = Cookie();
     const params = new URLSearchParams(window.location.search);
     const accessToken = params.get("accessToken");
-    const refreshToken = params.get("refershToken");
+    const refreshToken = params.get("refreshToken");
     if (accessToken && refreshToken) {
       cookie.set("e-commercs", accessToken);
-      cookie.set("refershToken", refreshToken);
-      navigate("/users");
+      cookie.set("refreshToken", refreshToken);
+      console.log(refreshToken, accessToken);
+      navigate("/dashboard/users");
     } else {
       console.error("No tokens found in URL");
     }
