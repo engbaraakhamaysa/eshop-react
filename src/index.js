@@ -13,12 +13,15 @@ import "./Pages/Dashboard/dashboard.css";
 
 //use thes to rous paths page wibsite
 import { BrowserRouter as Router } from "react-router-dom";
+import MenuContext from "./Context/MenuContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <MenuContext>
+      <Router>
+        <App />
+      </Router>
+    </MenuContext>
   </React.StrictMode>
 );

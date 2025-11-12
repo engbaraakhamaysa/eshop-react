@@ -5,7 +5,7 @@ import Cookie from "cookie-universal";
 export default function Logout() {
   async function handleLogout() {
     const cookie = Cookie();
-    const refreshToken = cookie.get("refershToken");
+    const refreshToken = cookie.get("refreshToken");
     if (!refreshToken) {
       console.log("No refresh token found");
       return;

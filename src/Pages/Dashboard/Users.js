@@ -18,7 +18,10 @@ export default function Users() {
       .catch((err) => console.log(err));
   });
   return (
-    <div>
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "100vh" }}
+    >
       <Logout />
     </div>
   );

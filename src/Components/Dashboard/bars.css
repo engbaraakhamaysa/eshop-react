@@ -18,13 +18,12 @@
   z-index: 1;
   height: 100vh;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  width: 220px;
 }
 .side-bar-link-css {
   color: #495057;
   font-size: 18px;
   transition: 0.3s;
-  padding: 10px 8px 10px 15px;
+  /* padding: 10px 8px 10px 15px; */
   margin: 0 8px;
   border-radius: 6px;
 }
