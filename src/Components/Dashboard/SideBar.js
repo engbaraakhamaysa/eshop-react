@@ -3,15 +3,23 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { Menu } from "../../Context/MenuContext";
+import { WindowSize } from "../../Context/WindowContext";
 
 export default function SideBar() {
   const menu = useContext(Menu);
   const isOpen = menu.isOpen;
   console.log(isOpen);
+
+  const WindowContext = useContext(WindowSize);
+  const windowWidth = WindowContext.windowSize;
+  console.log(windowWidth);
   return (
     <div
       className="side-bar pt-3"
-      style={{ width: isOpen ? "240px" : "fit-content" }}
+      style={{
+        left: windowWidth < 768 ? (isOpen ? 0 : "-100%") : 0,
+        width: isOpen ? "240px" : "fit-content",
+      }}
     >
       <NavLink
         to={"users"}
