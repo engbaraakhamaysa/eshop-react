@@ -1,31 +1,23 @@
-import axios from "axios";
 import { useEffect } from "react";
-import { baseURL, GOOGLE_CALL_BACK } from "../../Api/Api";
-import { useLocation } from "react-router-dom";
 import Cookie from "cookie-universal";
+import { useNavigate } from "react-router-dom";
 
 export default function GoofleCallBack() {
-  const cookie = Cookie();
+  const navigate = useNavigate();
 
-  const location = useLocation();
   useEffect(() => {
-    async function GoogleCall() {
-      try {
-        const res = await axios.get(
-          `${baseURL}/${GOOGLE_CALL_BACK}/${location.search}`
-        );
-        console.log(res);
-
-        const token = res.data.token.accessToken;
-        const refershToken = res.data.token.refreshTokenString;
-        cookie.set("e-commercs", token);
-        cookie.set("refershToken", refershToken);
-      } catch (err) {
-        console.log(err);
-      }
+    const cookie = Cookie();
+    const params = new URLSearchParams(window.location.search);
+    const accessToken = params.get("accessToken");
+    const refreshToken = params.get("refershToken");
+    if (accessToken && refreshToken) {
+      cookie.set("e-commercs", accessToken);
+      cookie.set("refershToken", refreshToken);
+      navigate("/users");
+    } else {
+      console.error("No tokens found in URL");
     }
-    GoogleCall();
-  }, []);
+  }, [navigate]);
 
   return <h1>test</h1>;
 }
