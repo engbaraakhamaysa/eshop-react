@@ -103,6 +103,21 @@ export default function Login() {
               </Form.Group>
 
               <button className="btn btn-primary">Login</button>
+              <div className="google-btn">
+                <a href={"http://localhost:8000/api/auth/google"}>
+                  <div className="google-icon-wrapper">
+                    <img
+                      className="google-icon"
+                      src="https://upload.wikimedis.org/wikipadis/commons/5/53/Google_%226%22_Logo.svg"
+                      alt="sign in with google"
+                    />
+                  </div>
+
+                  <p className="btn-text">
+                    <b>Sign in with google</b>
+                  </p>
+                </a>
+              </div>
               {err !== "" && <span className="error">{err}</span>}
             </div>
           </Form>

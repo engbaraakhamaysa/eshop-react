@@ -17,7 +17,7 @@ function App() {
 
         <Route path="/" element={<HomePage />}></Route>
 
-        <Route path="/auth/google/callback" element={<GoofleCallBack />} />
+        <Route path="/google/callback" element={<GoofleCallBack />} />
 
         {/* Protected Routes */}
         <Route path="/dashboard" element={<Dashboard />}>
