@@ -3,6 +3,7 @@ import HomePage from "./Pages/Website/HomePage";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import Users from "./Pages/Dashboard/Users";
+import User from "./Pages/Dashboard/userUpdate";
 import GoofleCallBack from "./Pages/Auth/GoogleCallBack";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import RequireAuth from "./Pages/Auth/RequireAuth";
@@ -24,6 +25,7 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="users" element={<Users />} />
+            <Route path="users/:id" element={<User />} />
           </Route>
         </Route>
       </Routes>
