@@ -3,6 +3,9 @@ import { baseURL, USERS } from "../../Api/Api";
 import Cookie from "cookie-universal";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Users() {
   const cooike = Cookie();
@@ -24,8 +27,24 @@ export default function Users() {
       <td>{key + 1}</td>
       <td>user.name</td>
       <td>user.email</td>
+      <td>
+        <div className="d-flex align-item-center gap-2">
+          <Link to={`${user.id}`}>
+            <FontAwesomeIcon fontSize={"19px"} icon={faPenToSquare} />
+          </Link>
+          <FontAwesomeIcon
+            onClick={handleDelete}
+            fontSize={"19px"}
+            color="red"
+            icon={faTrash}
+          />
+        </div>
+      </td>
     </tr>
   ));
+
+  //Handle Delete
+  function handleDelete() {}
 
   return (
     <div className="bg-white w-100 p-2">
