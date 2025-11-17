@@ -31,7 +31,7 @@ export default function Users() {
       <td>{user.email}</td>
       <td>
         <div className="d-flex align-item-center gap-2">
-          <Link to={`${user.id}`}>
+          <Link to={`${user._id}`}>
             <FontAwesomeIcon fontSize={"19px"} icon={faPenToSquare} />
           </Link>
           <FontAwesomeIcon
