@@ -3,7 +3,7 @@ import HomePage from "./Pages/Website/HomePage";
 import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 import Users from "./Pages/Dashboard/Users";
-import User from "./Pages/Dashboard/userUpdate";
+import User from "./Pages/Dashboard/User";
 import GoofleCallBack from "./Pages/Auth/GoogleCallBack";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import RequireAuth from "./Pages/Auth/RequireAuth";

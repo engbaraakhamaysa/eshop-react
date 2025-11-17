@@ -18,15 +18,17 @@ export default function Users() {
           Authorization: "Bearer " + cooike.get("e-commercs"),
         },
       })
-      .then((data) => setUsers(data.data))
+      .then((res) => {
+        setUsers(res.data.user);
+      })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   const usersShow = users.map((user, key) => (
     <tr key={key}>
       <td>{key + 1}</td>
-      <td>user.name</td>
-      <td>user.email</td>
+      <td>{user.name}</td>
+      <td>{user.email}</td>
       <td>
         <div className="d-flex align-item-center gap-2">
           <Link to={`${user.id}`}>

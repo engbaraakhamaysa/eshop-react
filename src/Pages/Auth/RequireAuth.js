@@ -1,4 +1,4 @@
-import { Navigate, Outlet, replace, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Cookie from "cookie-universal";
 import { useEffect, useState } from "react";
 import { USER } from "../../Api/Api";
@@ -13,6 +13,7 @@ export default function RequireAuth() {
       .then((data) => setUser(data.data))
       .catch(() => navigate("/login", { replace: true }));
   }, []);
+
   const cookie = Cookie();
   const token = cookie.get("e-commercs");
   return token ? (
