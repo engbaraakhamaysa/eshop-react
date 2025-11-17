@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import { baseURL, USERS } from "../../Api/Api";
+import { baseURL, USERS, USER } from "../../Api/Api";
 import Cookie from "cookie-universal";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Axios } from "../../Api/axios";
 
 export default function Users() {
   const cooike = Cookie();
   const [users, setUsers] = useState([]);
+
+  //refersh useEffect
+  const [deleteUser, setDeleteUser] = useState(false);
 
   useEffect(() => {
     axios
@@ -22,7 +26,7 @@ export default function Users() {
         setUsers(res.data.user);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [deleteUser]);
 
   const usersShow = users.map((user, key) => (
     <tr key={key}>
@@ -35,9 +39,10 @@ export default function Users() {
             <FontAwesomeIcon fontSize={"19px"} icon={faPenToSquare} />
           </Link>
           <FontAwesomeIcon
-            onClick={handleDelete}
+            onClick={() => handleDelete(user._id)}
             fontSize={"19px"}
             color="red"
+            cursor={"pointer"}
             icon={faTrash}
           />
         </div>
@@ -46,7 +51,13 @@ export default function Users() {
   ));
 
   //Handle Delete
-  function handleDelete() {}
+  async function handleDelete(id) {
+    try {
+      const res = await Axios.delete(`/${USER}/${id}`);
+      setDeleteUser((prv) => !prv);
+      console.log(res);
+    } catch (err) {}
+  }
 
   return (
     <div className="bg-white w-100 p-2">
