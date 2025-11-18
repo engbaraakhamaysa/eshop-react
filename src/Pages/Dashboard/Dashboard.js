@@ -5,7 +5,7 @@ import SideBar from "../../Components/Dashboard/SideBar";
 
 export default function Dashboard() {
   return (
-    <div className="position-relative dashboard d-flex gap-1">
+    <div>
       <TopBar />
       <div className="dashboard d-flex gap-1" style={{ marginTop: "70px" }}>
         <SideBar />

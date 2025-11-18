@@ -15,6 +15,16 @@ export default function Users() {
   //refersh useEffect
   const [deleteUser, setDeleteUser] = useState(false);
 
+  //User is sgin in
+  const [currentUser, setCurrentUser] = useState(false);
+
+  //In Not Users In The DB
+  const [userNo, setUserNo] = useState(false);
+
+  useEffect(() => {
+    Axios.get(`${USER}`).then((res) => setCurrentUser(res.data));
+  }, []);
+
   useEffect(() => {
     axios
       .get(`${baseURL}/${USERS}`, {
@@ -23,16 +33,24 @@ export default function Users() {
         },
       })
       .then((res) => {
-        setUsers(res.data.user);
+        setUsers(res.data.user).then(() => setUserNo(true));
       })
       .catch((err) => console.log(err));
   }, [deleteUser]);
 
-  const usersShow = users.map((user, key) => (
+  const userFiler = users.filter((user) => user._id !== currentUser._id);
+  const usersShow = userFiler.map((user, key) => (
     <tr key={key}>
       <td>{key + 1}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
+      <td>
+        {user.role === "1995"
+          ? "Admin"
+          : user.role === "2001"
+          ? "User"
+          : "Writer"}{" "}
+      </td>
       <td>
         <div className="d-flex align-item-center gap-2">
           <Link to={`${user._id}`}>
@@ -71,7 +89,21 @@ export default function Users() {
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>{usersShow}</tbody>
+        <tbody>
+          {users.length === 0 ? (
+            <tr>
+              <td colSpan={12} className="text-center">
+                Loading ...
+              </td>
+            </tr>
+          ) : users.length <= 1 && userNo ? (
+            <tr colSpan={12} className="text-center">
+              No User Found
+            </tr>
+          ) : (
+            usersShow
+          )}
+        </tbody>
       </Table>
     </div>
   );
