@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import { Axios } from "../../Api/axios";
-import { GETUSER, USER } from "../../Api/Api";
+import { USER } from "../../Api/Api";
 import Loading from "../../Components/Loading/Loading";
 
 export default function User() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
 
   //State to Button
   const [disable, setDisable] = useState(true);
@@ -17,10 +18,11 @@ export default function User() {
   console.log(id);
 
   useEffect(() => {
-    Axios.get(`${GETUSER}/${id}`)
+    Axios.get(`/${USER}/${id}`)
       .then((res) => {
         setName(res.data.name);
         setEmail(res.data.email);
+        setRole(res.data.role);
       })
       .then(() => setDisable(false));
   }, []);
@@ -30,9 +32,10 @@ export default function User() {
     e.preventDefault();
 
     try {
-      const res = await Axios.post(`${USER}/Edit/${id}`, {
+      const res = await Axios.put(`/${USER}/${id}`, {
         name: name,
         email: email,
+        role: role,
       });
       window.location.pathname = "/dashboard";
     } catch (err) {
@@ -64,6 +67,18 @@ export default function User() {
             type="email"
             placeholder="email.."
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+          <Form.Label>User Email</Form.Label>
+          <Form.Select value={role} onChange={(e) => setRole(e.target.value)}>
+            <option disabled value={""}>
+              Select Roles
+            </option>
+            <option value={"1995"}>Admin</option>
+            <option value={"2001"}>User</option>
+            <option value={"1996"}>Writer</option>
+          </Form.Select>
         </Form.Group>
         <button disabled={disable} className="btn btn-primary">
           Save

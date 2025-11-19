@@ -79,7 +79,12 @@ export default function Users() {
 
   return (
     <div className="bg-white w-100 p-2">
-      <h1>Users Page</h1>
+      <div className="d-flex align-items-center justify-content-between">
+        <h1>Users Page</h1>
+        <Link className="btn btn-primary" to="/dashboard/user/add">
+          Add User
+        </Link>
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>
