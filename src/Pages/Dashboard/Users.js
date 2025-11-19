@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { baseURL, USERS, USER } from "../../Api/Api";
+import { baseURL, USERS, USER, AUTH_USER } from "../../Api/Api";
 import Cookie from "cookie-universal";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
@@ -22,7 +22,7 @@ export default function Users() {
   const [userNo, setUserNo] = useState(false);
 
   useEffect(() => {
-    Axios.get(`${USER}`).then((res) => setCurrentUser(res.data));
+    Axios.get(`/${AUTH_USER}`).then((res) => setCurrentUser(res.data));
   }, []);
 
   useEffect(() => {
@@ -33,7 +33,8 @@ export default function Users() {
         },
       })
       .then((res) => {
-        setUsers(res.data.user).then(() => setUserNo(true));
+        setUsers(res.data.user);
+        setUserNo(true);
       })
       .catch((err) => console.log(err));
   }, [deleteUser]);
