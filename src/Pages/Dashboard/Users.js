@@ -21,10 +21,13 @@ export default function Users() {
   //In Not Users In The DB
   const [userNo, setUserNo] = useState(false);
 
+  //Git User Sign in on the Dashboard (Current User)
+
   useEffect(() => {
     Axios.get(`/${AUTH_USER}`).then((res) => setCurrentUser(res.data));
   }, []);
 
+  //Get All User
   useEffect(() => {
     axios
       .get(`${baseURL}/${USERS}`, {
@@ -39,6 +42,7 @@ export default function Users() {
       .catch((err) => console.log(err));
   }, [deleteUser]);
 
+  //Flilter User is Sgin in The dashboard
   const userFiler = users.filter((user) => user._id !== currentUser._id);
   const usersShow = userFiler.map((user, key) => (
     <tr key={key}>
@@ -75,7 +79,9 @@ export default function Users() {
       const res = await Axios.delete(`/${USER}/${id}`);
       setDeleteUser((prv) => !prv);
       console.log(res);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (

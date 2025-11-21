@@ -36,7 +36,7 @@ export default function Register() {
       const refershToken = res.data.token.refreshTokenString;
       cooike.set("e-commercs", token);
       cooike.set("refershToken", refershToken);
-      window.location.pathname = "/users";
+      window.location.pathname = "/dashboard";
       console.log(res);
     } catch (err) {
       setLoading(false);
