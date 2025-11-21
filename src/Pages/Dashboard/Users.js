@@ -49,13 +49,7 @@ export default function Users() {
       <td>{key + 1}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
-      <td>
-        {user.role === "1995"
-          ? "Admin"
-          : user.role === "2001"
-          ? "User"
-          : "Writer"}{" "}
-      </td>
+      <td>{user.role}</td>
       <td>
         <div className="d-flex align-item-center gap-2">
           <Link to={`${user._id}`}>
@@ -98,6 +92,7 @@ export default function Users() {
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Role</th>
             <th>Action</th>
           </tr>
         </thead>
