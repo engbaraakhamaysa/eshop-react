@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { Menu } from "../../Context/MenuContext";
@@ -52,12 +52,12 @@ export default function SideBar() {
           </p>
         </NavLink>
         <NavLink
-          to={"products"}
+          to={"/dashboard/user/add"}
           className={"d-flex align-items-center gap-2 side-bar-link-css"}
         >
           <FontAwesomeIcon
             style={{ padding: isOpen ? "10px 8px 10px 15px" : "10px 8px" }}
-            icon={faUsers}
+            icon={faPlus}
           />
           <p
             className="m-0"
@@ -65,7 +65,7 @@ export default function SideBar() {
               display: isOpen ? "block" : "none",
             }}
           >
-            Products
+            Add User
           </p>
         </NavLink>
       </div>
