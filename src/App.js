@@ -10,6 +10,7 @@ import RequireAuth from "./Pages/Auth/RequireAuth";
 import AddUser from "./Pages/Dashboard/AddUser";
 
 import Writer from "./Pages/Dashboard/Writer";
+import Err404 from "./Pages/Auth/404";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
 
         <Route path="/google/callback" element={<GoofleCallBack />} />
+
+        <Route path="/*" element={<Err404 />} />
 
         {/* Protected Routes */}
         <Route element={<RequireAuth allowedRole={["admin", "writer"]} />}>
