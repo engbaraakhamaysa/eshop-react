@@ -68,6 +68,24 @@ export default function SideBar() {
             Add User
           </p>
         </NavLink>
+
+        <NavLink
+          to={"/dashboard/writer"}
+          className={"d-flex align-items-center gap-2 side-bar-link-css"}
+        >
+          <FontAwesomeIcon
+            style={{ padding: isOpen ? "10px 8px 10px 15px" : "10px 8px" }}
+            icon={faPlus}
+          />
+          <p
+            className="m-0"
+            style={{
+              display: isOpen ? "block" : "none",
+            }}
+          >
+            Writer
+          </p>
+        </NavLink>
       </div>
     </>
   );

@@ -20,9 +20,10 @@ export default function TopBar() {
       .catch(() => Navigate("/login", { replace: true }));
   }, []);
   console.log(menu);
+
   async function handleLogout() {
     const cookie = Cookie();
-    const refreshToken = cookie.get("refreshToken");
+    const refreshToken = cookie.get("refershToken");
     if (!refreshToken) {
       console.log("No refresh token found");
       return;
@@ -30,6 +31,7 @@ export default function TopBar() {
 
     try {
       const res = await axios.post(`${baseURL}/${LOGOUt}`, { refreshToken });
+      console.log(res.data);
       window.location.pathname = "/login";
 
       console.log(res.data);
