@@ -11,15 +11,17 @@ import AddUser from "./Pages/Dashboard/AddUser";
 
 import Writer from "./Pages/Dashboard/Writer";
 import Err404 from "./Pages/Auth/404";
+import RequireBack from "./Pages/Auth/RequireBack";
 
 function App() {
   return (
     <div>
       <Routes>
         {/* Public Routes */}
-        <Route path="/login" element={<Login />}></Route>
-
-        <Route path="/register" element={<Register />}></Route>
+        <Route element={<RequireBack />}>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+        </Route>
 
         <Route path="/" element={<HomePage />}></Route>
 
