@@ -43,11 +43,13 @@ export default function Users() {
   }, [deleteUser]);
 
   //Flilter User is Sgin in The dashboard
-  const userFiler = users.filter((user) => user._id !== currentUser._id);
-  const usersShow = userFiler.map((user, key) => (
+  // const userFiler = users.filter((user) => user._id !== currentUser._id);
+  const usersShow = users.map((user, key) => (
     <tr key={key}>
       <td>{key + 1}</td>
-      <td>{user.name}</td>
+      <td>
+        {user.name === currentUser.name ? user.name + " (You)" : user.name}
+      </td>
       <td>{user.email}</td>
       <td>{user.role}</td>
       <td>
@@ -55,13 +57,15 @@ export default function Users() {
           <Link to={`${user._id}`}>
             <FontAwesomeIcon fontSize={"19px"} icon={faPenToSquare} />
           </Link>
-          <FontAwesomeIcon
-            onClick={() => handleDelete(user._id)}
-            fontSize={"19px"}
-            color="red"
-            cursor={"pointer"}
-            icon={faTrash}
-          />
+          {currentUser._id !== user._id && (
+            <FontAwesomeIcon
+              onClick={() => handleDelete(user._id)}
+              fontSize={"19px"}
+              color="red"
+              cursor={"pointer"}
+              icon={faTrash}
+            />
+          )}
         </div>
       </td>
     </tr>
@@ -69,12 +73,14 @@ export default function Users() {
 
   //Handle Delete
   async function handleDelete(id) {
-    try {
-      const res = await Axios.delete(`/${USER}/${id}`);
-      setDeleteUser((prv) => !prv);
-      console.log(res);
-    } catch (err) {
-      console.log(err);
+    if (currentUser._id !== id) {
+      try {
+        const res = await Axios.delete(`/${USER}/${id}`);
+        setDeleteUser((prv) => !prv);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 
@@ -103,7 +109,7 @@ export default function Users() {
                 Loading ...
               </td>
             </tr>
-          ) : users.length <= 1 && userNo ? (
+          ) : users.length <= 0 && userNo ? (
             <tr colSpan={12} className="text-center">
               No User Found
             </tr>

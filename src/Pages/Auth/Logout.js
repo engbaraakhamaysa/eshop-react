@@ -19,7 +19,7 @@ export default function Logout() {
       cookie.remove("e-commercs");
       cookie.remove("refershToken");
     } catch (err) {
-      console.log(err.response ? err.response.data : err);
+      console.log(err);
     }
   }
 
