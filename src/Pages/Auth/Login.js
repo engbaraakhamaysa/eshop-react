@@ -34,7 +34,10 @@ export default function Login() {
       const refershToken = res.data.token.refreshTokenString;
       cooike.set("e-commercs", token);
       cooike.set("refershToken", refershToken);
-      window.location.pathname = "/dashboard";
+      const role = res.data.user.role;
+      console.log(role);
+      const go = role === "admin" ? "users" : "writer";
+      window.location.pathname = `/dashboard/${go}`;
 
       console.log(res);
     } catch (err) {

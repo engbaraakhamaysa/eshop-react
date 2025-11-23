@@ -12,6 +12,7 @@ import AddUser from "./Pages/Dashboard/AddUser";
 import Writer from "./Pages/Dashboard/Writer";
 import Err404 from "./Pages/Auth/404";
 import RequireBack from "./Pages/Auth/RequireBack";
+import Products from "./Pages/Dashboard/Products";
 
 function App() {
   return (
@@ -30,7 +31,9 @@ function App() {
         <Route path="/*" element={<Err404 />} />
 
         {/* Protected Routes */}
-        <Route element={<RequireAuth allowedRole={["admin", "writer"]} />}>
+        <Route
+          element={<RequireAuth allowedRole={["admin", "writer", "manger"]} />}
+        >
           <Route path="/dashboard" element={<Dashboard />}>
             <Route element={<RequireAuth allowedRole={["admin"]} />}>
               <Route path="users" element={<Users />} />
@@ -39,6 +42,9 @@ function App() {
             </Route>
             <Route element={<RequireAuth allowedRole={["writer", "admin"]} />}>
               <Route path="writer" element={<Writer />} />
+            </Route>
+            <Route element={<RequireAuth allowedRole={["manger", "admin"]} />}>
+              <Route path="products" element={<Products />} />
             </Route>
           </Route>
         </Route>
