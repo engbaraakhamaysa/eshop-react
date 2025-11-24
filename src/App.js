@@ -12,7 +12,7 @@ import AddUser from "./Pages/Dashboard/AddUser";
 import Writer from "./Pages/Dashboard/Writer";
 import Err404 from "./Pages/Auth/404";
 import RequireBack from "./Pages/Auth/RequireBack";
-import Products from "./Pages/Dashboard/Products";
+import Categories from "./Pages/Dashboard/Categories";
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
               <Route path="writer" element={<Writer />} />
             </Route>
             <Route element={<RequireAuth allowedRole={["manger", "admin"]} />}>
-              <Route path="products" element={<Products />} />
+              <Route path="products" element={<Categories />} />
             </Route>
           </Route>
         </Route>

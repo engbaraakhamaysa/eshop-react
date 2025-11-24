@@ -3,10 +3,11 @@ import { baseURL, USERS, USER, AUTH_USER } from "../../Api/Api";
 import Cookie from "cookie-universal";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Axios } from "../../Api/axios";
+import TableShow from "../../Components/Dashboard/Table";
 
 export default function Users() {
   const cooike = Cookie();
@@ -41,6 +42,25 @@ export default function Users() {
       })
       .catch((err) => console.log(err));
   }, [deleteUser]);
+
+  const header = [
+    {
+      key: "_id",
+      name: "id",
+    },
+    {
+      key: "name",
+      name: "Username",
+    },
+    {
+      key: "email",
+      name: "Eamil",
+    },
+    {
+      key: "role",
+      name: "Role",
+    },
+  ];
 
   //Flilter User is Sgin in The dashboard
   // const userFiler = users.filter((user) => user._id !== currentUser._id);
@@ -92,7 +112,8 @@ export default function Users() {
           Add User
         </Link>
       </div>
-      <Table striped bordered hover>
+      <TableShow header={header} data={users} />
+      {/* <Table striped bordered hover>
         <thead>
           <tr>
             <th>ID</th>
@@ -117,7 +138,7 @@ export default function Users() {
             usersShow
           )}
         </tbody>
-      </Table>
+      </Table> */}
     </div>
   );
 }
