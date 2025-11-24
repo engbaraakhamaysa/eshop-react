@@ -49,7 +49,7 @@ export default function TableShow(props) {
       </thead>
       <tbody>
         {props.data.length === 0 && (
-          <tr text-center>
+          <tr className="text-center">
             <td colSpan={12}>Loding...</td>
           </tr>
         )}
