@@ -8,17 +8,8 @@ import { Axios } from "../../Api/axios";
 export default function TableShow(props) {
   const currentUser = props.currentUser || false;
   //Handle Delete
-  async function handleDelete(id) {
-    try {
-      const res = await Axios.delete(`/${props.delete}/${id}`);
 
-      console.log(res);
-    } catch (err) {
-      console.log(err);
-    }
-  }
   const headerShow = props.header.map((item) => <th>{item.name}</th>);
-
   const dataShow = props.data.map((item, key) => (
     <tr key={key}>
       <td>{key + 1}</td>
@@ -28,6 +19,7 @@ export default function TableShow(props) {
           {currentUser && item[itme2.key] === currentUser.name && " (You)"}
         </td>
       ))}
+
       <td>
         <div className="d-flex align-item-center gap-2">
           <Link to={`${item._id}`}>
@@ -35,7 +27,7 @@ export default function TableShow(props) {
           </Link>
           {currentUser.name !== item.name && (
             <FontAwesomeIcon
-              onClick={() => handleDelete(item._id)}
+              onClick={() => props.delete(item._id)}
               fontSize={"19px"}
               color="red"
               cursor={"pointer"}
@@ -46,6 +38,7 @@ export default function TableShow(props) {
       </td>
     </tr>
   ));
+
   return (
     <Table striped bordered haver>
       <thead>
@@ -54,7 +47,14 @@ export default function TableShow(props) {
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>{dataShow}</tbody>
+      <tbody>
+        {props.data.length === 0 && (
+          <tr text-center>
+            <td colSpan={12}>Loding...</td>
+          </tr>
+        )}
+        {dataShow}
+      </tbody>
     </Table>
   );
 }

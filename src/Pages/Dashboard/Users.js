@@ -45,10 +45,6 @@ export default function Users() {
 
   const header = [
     {
-      key: "_id",
-      name: "id",
-    },
-    {
       key: "name",
       name: "Username",
     },
@@ -96,8 +92,8 @@ export default function Users() {
     if (currentUser._id !== id) {
       try {
         const res = await Axios.delete(`/${USER}/${id}`);
-        setDeleteUser((prv) => !prv);
         console.log(res);
+        setUsers((prv) => prv.filter((item) => item._id !== id));
       } catch (err) {
         console.log(err);
       }
@@ -115,7 +111,7 @@ export default function Users() {
       <TableShow
         header={header}
         data={users}
-        delete={USER}
+        delete={handleDelete}
         currentUser={currentUser}
       />
       {/* <Table striped bordered hover>
