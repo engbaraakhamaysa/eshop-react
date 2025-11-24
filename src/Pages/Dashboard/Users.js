@@ -112,7 +112,12 @@ export default function Users() {
           Add User
         </Link>
       </div>
-      <TableShow header={header} data={users} delete={USER} />
+      <TableShow
+        header={header}
+        data={users}
+        delete={USER}
+        currentUser={currentUser}
+      />
       {/* <Table striped bordered hover>
         <thead>
           <tr>
